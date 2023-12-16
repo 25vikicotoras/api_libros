@@ -1,0 +1,16 @@
+const express = require('express');
+const app = express();
+app.use(express.json());
+
+//importamos el Router de Libos
+const librosRouter = require('./routes/libros');
+
+//importamos el Middleware Error Handler
+const errorHandler = require('./middlewares/errorHandler');
+app.use('/libros', librosRouter);
+
+app.use(errorHandler);
+
+app.listen(3000, () => {
+    console.log('Servidor iniciando en el puerto 3000');
+});
